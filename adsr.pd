@@ -1,0 +1,33 @@
+#N canvas 2037 497 465 495 10;
+#X text 100 195 attack;
+#X text 280 265 release;
+#X msg 241 265 0 500;
+#X obj 101 215 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 241 214 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X msg 176 219 stop;
+#X obj 167 308 line~;
+#X text 173 193 decay;
+#X text 237 191 sustain;
+#X msg 166 266 0.5 2500;
+#X obj 166 242 del 200;
+#X msg 101 242 1 200;
+#X obj 88 81 unpack 0 0;
+#X obj 145 119 route 0;
+#X obj 87 59 r adsr-note-\$1;
+#X obj 164 366 throw~ adsr-amp-\$1;
+#X connect 2 0 6 0;
+#X connect 3 0 11 0;
+#X connect 3 0 10 0;
+#X connect 4 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 10 0;
+#X connect 6 0 15 0;
+#X connect 9 0 6 0;
+#X connect 10 0 9 0;
+#X connect 11 0 6 0;
+#X connect 12 1 13 0;
+#X connect 13 0 4 0;
+#X connect 13 1 3 0;
+#X connect 14 0 12 0;
