@@ -1,0 +1,115 @@
+#N canvas 33 56 1887 1024 10;
+#X obj 409 198 pack 0 0;
+#X obj 409 247 pack 0 0 0;
+#X obj 922 249 loadbang;
+#X obj 922 271 metro 10;
+#X obj 922 293 s metro;
+#X obj 409 269 route 1 2 3 4, f 36;
+#X obj 159 243 s c1;
+#X obj 159 303 s c2;
+#X obj 159 363 s c3;
+#X obj 159 423 s c4;
+#X obj 159 483 s c5;
+#X obj 159 543 s c6;
+#X obj 159 603 s c7;
+#X obj 159 663 s c8;
+#X obj 78 213 ctlin 1 0;
+#X obj 78 273 ctlin 2 0;
+#X obj 78 333 ctlin 3 0;
+#X obj 78 393 ctlin 4 0;
+#X obj 78 453 ctlin 5 0;
+#X obj 78 513 ctlin 6 0;
+#X obj 78 573 ctlin 7 0;
+#X obj 78 633 ctlin 8 0;
+#X obj 409 169 notein 0;
+#X text 400 135 Voice management;
+#X text 400 145 ----------------;
+#X text 400 365 Voices;
+#X text 400 375 ------;
+#X text 395 439 Post-effects and output;
+#X text 395 449 -----------------------;
+#X text 80 146 Midi CC routing;
+#X text 80 156 ---------------;
+#X text 205 242 gain;
+#X text 205 302 attack/release;
+#X text 205 362 cutoff (pre-FX);
+#X text 205 422 osc2 detune;
+#X text 205 482 delay length;
+#X text 205 542 delay feedback;
+#X text 205 602 cutoff (post-FX);
+#X text 205 662 sub-oscillator gain;
+#X obj 404 612 tabwrite~ array1;
+#X obj 403 506 metro;
+#X floatatom 429 482 5 0 0 0 - - -, f 5;
+#X obj 403 486 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 404 530 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array1 259 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 258 -1 500 140 1 0 0;
+#X restore 1041 190 graph;
+#X obj 409 225 poly 4 1;
+#X obj 516 504 catch~ output-1;
+#X obj 516 526 +~, f 13;
+#X obj 742 527 +~, f 13;
+#X obj 741 505 catch~ output-3;
+#X obj 856 506 catch~ output-4;
+#X obj 517 554 +~, f 13;
+#X obj 519 612 dac~ 1 2;
+#X obj 631 505 catch~ output-2;
+#X text 71 65 comment;
+#X text 71 55 base synth taken from https://patchstorage.com/instruments-poly-midi-synth/
+;
+#X obj 409 299 s sinevoice-note-1;
+#X obj 495 329 s sinevoice-note-2;
+#X obj 589 299 s sinevoice-note-3;
+#X obj 671 325 s sinevoice-note-4;
+#X obj 408 396 sinevoice 1;
+#X obj 489 396 sinevoice 2;
+#X obj 570 396 sinevoice 3;
+#X obj 654 397 sinevoice 4;
+#X obj 518 584 *~ 0.25;
+#X connect 0 0 45 0;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 56 0;
+#X connect 5 1 57 0;
+#X connect 5 2 58 0;
+#X connect 5 3 59 0;
+#X connect 14 0 6 0;
+#X connect 15 0 7 0;
+#X connect 16 0 8 0;
+#X connect 17 0 9 0;
+#X connect 18 0 10 0;
+#X connect 19 0 11 0;
+#X connect 20 0 12 0;
+#X connect 21 0 13 0;
+#X connect 22 0 0 0;
+#X connect 22 1 0 1;
+#X connect 40 0 43 0;
+#X connect 41 0 40 1;
+#X connect 42 0 40 0;
+#X connect 43 0 39 0;
+#X connect 45 0 1 0;
+#X connect 45 1 1 1;
+#X connect 45 2 1 2;
+#X connect 46 0 47 0;
+#X connect 47 0 51 0;
+#X connect 48 0 51 1;
+#X connect 49 0 48 0;
+#X connect 50 0 48 1;
+#X connect 51 0 39 0;
+#X connect 51 0 64 0;
+#X connect 53 0 47 1;
+#X connect 64 0 52 0;
+#X connect 64 0 52 1;
