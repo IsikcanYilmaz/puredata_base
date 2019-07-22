@@ -1,0 +1,32 @@
+#N canvas 561 289 1200 733 10;
+#X obj 126 52 hsl 128 15 0 127 0 0 empty empty Carrier_frequency -2
+-8 0 10 -262144 -1 -1 0 1;
+#X obj 123 95 mtof~;
+#X obj 134 428 scope 0;
+#X obj 131 268 +~;
+#X obj 132 319 osc~;
+#X obj 164 396 dac~;
+#X obj 151 159 osc~;
+#X obj 154 215 *~;
+#X obj 151 125 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 1000 256;
+#X obj 204 219 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 2000 256;
+#X text 264 218 < modulation amount in Hz;
+#X text 217 120 < modulation frequency in Hz;
+#X text 169 87 < [mtof~] creates the carrier audio signal which will
+be modulated;
+#X text 198 161 < this osc~ is the modulator oscillator. it determines
+how quickly the frequency of the carrier oscillator changes \, by how
+much.;
+#X text 172 310 < this osc is the carrier oscillator \, whose frequency
+is changed by the modulator;
+#X text 169 268 < We add the modulator to the carrier frequency;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 6 0 7 0;
+#X connect 7 0 3 1;
+#X connect 8 0 6 0;
+#X connect 9 0 7 1;
